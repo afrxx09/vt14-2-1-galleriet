@@ -1,0 +1,141 @@
+﻿* {
+    margin:0;
+    padding:0;
+}
+
+body {
+    font-family:sans-serif;
+}
+input, button {
+    outline:none;
+}
+input[type="text"] {
+    padding:3px;
+    border:1px solid #000;
+}
+input[type="text"]:focus {
+    border: 1px solid #33bb00;
+}
+
+a.button,
+input[type="submit"],
+button {
+    padding:10px 30px;
+    color: #fff;
+    background-color: #7200b7;
+    border: 1px solid #fff;
+    font-weight: bold;
+}
+    a.button,
+    input[type="submit"]:focus,
+    button:focus {
+        border: 1px solid #33bb00;
+    }
+
+#wrap {
+    width:600px;
+    margin:0 auto;
+    border:1px solid #7200b7;
+}
+
+#header {
+    padding: 10px 20px;
+    color:#fff;
+    background-color: #7200b7;
+}
+
+#content {
+    padding:10px;
+}
+
+#PreviewImageContainer {
+    width:100%;
+    margin-bottom:20px;
+}
+
+#PreviewImageContainer img{
+    display:block;
+    max-height:300px;
+    margin:0 auto;
+    padding:10px;
+    border:1px solid #000;
+}
+
+#ImageListContainer {
+    white-space:nowrap;
+    height:125px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+#ImageListContainer ul{
+    list-style:none;
+}
+
+#ImageListContainer ul li{
+    display:inline-block;
+    margin:0 5px;
+}
+
+#ImageListContainer ul li a {
+    display: block;
+}
+
+#ImageListContainer ul li img{
+    display:block;
+    width:90px;
+    height:90px;
+    padding:4px;
+    border:1px solid #000;
+    margin:0 auto;
+}
+
+#footer {
+    padding:10px 20px;
+    clear:both;
+    background-color: #7200b7;
+}
+
+    #footer p {
+        color:#fff;
+        font-weight:normal;
+        font-size:.8em;
+    }
+
+.formrow {
+    margin-bottom:10px;
+}
+
+.errortext {
+    color: #f00;
+}
+
+    .errortext ul {
+        list-style:none;
+    }
+
+#UploadSuccessContainer {
+    display:block;
+    padding:20px 50px;
+    border:1px solid #33bb00;
+    background-color:#acff8c;
+}
+
+.closebutton {
+    float:right;
+    padding: 1px 5px;
+    color:#fff;
+    font-weight:bold;
+    background-color:#b33;
+    border:1px solid #f66;
+    margin-top:-10px;
+    margin-right:-40px;
+    cursor:pointer;
+}
+
+#UploadFailContainer {
+    display:block;
+    padding:20px 50px;
+    border:1px solid #bc0;
+    background-color:#fcc;
+}
