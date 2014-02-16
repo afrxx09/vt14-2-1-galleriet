@@ -5,6 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 
@@ -12,6 +13,7 @@ namespace ImageGallery.Model
 {
     public class Service
     {
+        private static readonly string[] ApprovedMIMEs;
         private static readonly Regex ApprovedExtentions;
         private static readonly Regex SantizePath;
         private static readonly string WorkingDir;
@@ -21,6 +23,7 @@ namespace ImageGallery.Model
             var invalidChars = new string(Path.GetInvalidFileNameChars());
             SantizePath = new Regex(string.Format("[{0}]", Regex.Escape(invalidChars)));
             ApprovedExtentions = new Regex(@"^.*\.(gif|jpg|png)$", RegexOptions.IgnoreCase);
+            ApprovedMIMEs = new string [] {"image/bmp", "image/jpeg", "image/x-png", "image/png", "image/gif"};
             WorkingDir = Path.Combine(
                 AppDomain.CurrentDomain.GetData("APPBASE").ToString(),
                 @"Content\Images"
@@ -57,6 +60,12 @@ namespace ImageGallery.Model
                 {
                     throw new ArgumentOutOfRangeException("Otillåten Filändelse.");
                 }
+
+                if (!ApprovedMIMEs.Contains(PostedFile.ContentType))
+                {
+                    throw new ArgumentException("Ogiltig MIME-type.");
+                }
+                
                 SantizePath.Replace(fileName, "");
 
                 if (ImageExists(fileName))
@@ -77,10 +86,9 @@ namespace ImageGallery.Model
         private string RenameImage(string fileName, int i = 1)
         {
             string ext =  fileName.Substring(fileName.LastIndexOf('.'));
-            string name = fileName.Replace(ext, "");
-            name = fileName.Replace("("+i+")", "");
-            string newFileName = String.Format("{0}({1}){2}", name, i, ext);
-            return (!ImageExists(newFileName)) ? newFileName : RenameImage(newFileName, i+1);
+            string basename = fileName.Replace(ext, "");
+            string newFileName = String.Format("{0}({1}){2}", basename, i, ext);
+            return (!ImageExists(newFileName)) ? newFileName : RenameImage(fileName, i + 1);
         }
 
         public void CreateThumbnail(string filename)

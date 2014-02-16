@@ -121,7 +121,7 @@ button {
     background-color:#acff8c;
 }
 
-.closebutton {
+#closebutton {
     float:right;
     padding: 1px 5px;
     color:#fff;

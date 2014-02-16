@@ -7,7 +7,7 @@
     <title>Bildgalleri</title>
     <script src="Scripts/ImageGallery.js"></script>
     <link href="~/styles/style.css" rel="stylesheet" />
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
 </head>
 <body>
     <div id="wrap">
@@ -40,7 +40,7 @@
                     <asp:PlaceHolder ID="phSuccess" runat="server" Visible="false">
                         <div id="UploadSuccessContainer">
                             <asp:Label ID="lblUploadSuccess" runat="server"></asp:Label>
-                            <span class="closebutton">X</span>
+                            <span id="closebutton">X</span>
                         </div>
                     </asp:PlaceHolder>
                     <asp:PlaceHolder ID="phFail" runat="server" Visible="false">
